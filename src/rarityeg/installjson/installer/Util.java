@@ -18,7 +18,7 @@ public final class Util {
                     break;
                 }
             }
-            if (!skip) {
+            if (!skip && f.length() > 0) {
                 ls.add(f);
             }
         }
@@ -28,10 +28,9 @@ public final class Util {
     public static void showCompleted() {
         String loader = System.getProperty("rsuggest");
         String version = System.getProperty("rversion");
-        String type = System.getProperty("rshowhint").toLowerCase();
         String msgEN = "Install has completed, but you still need to install " + loader + " and Minecraft " + version + " to make it work.";
         String msgCN = "安装已经完成，但你仍然需要安装 " + loader + " 和 Minecraft " + version + " 才能开始畅玩。";
-        if ("hint".equals(type)) {
+        if ("hint".equalsIgnoreCase(System.getProperty("rshowhint"))) {
             JOptionPane.showMessageDialog(null, msgEN + "\n" + msgCN, "Almost There 就快好了", JOptionPane.INFORMATION_MESSAGE);
         }
     }
